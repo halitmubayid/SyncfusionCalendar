@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+
+    <!-- Syncfusion ASP.NET Core controls styles -->
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.3.56/fluent.css" />
+    <!-- Syncfusion ASP.NET Core controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/20.3.56/dist/ej2.min.js"></script>
+</head>
+<body>
+@{
+    List<ScheduleView> viewOption = new List<ScheduleView>()
+    {
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Day },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Week },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.WorkWeek },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Month },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Year },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.TimelineDay }
+    };
+}
+    <ejs-schedule id="schedule" width="100%" height="550px" selectedDate="new DateTime(2018, 4, 1)" views="viewOption">
+        <e-schedule-group resources="@ViewBag.Resources"></e-schedule-group>
+        <e-schedule-eventsettings dataSource="@ViewBag.datasource"></e-schedule-eventsettings>
+
+        <e-schedule-resources>
+            <e-schedule-resource dataSource="@ViewBag.Owners" field="OwnerId" title="Owners" name="Owners" textField="text" idField="id" colorField="color" allowMultiple="true"></e-schedule-resource>
+        </e-schedule-resources>
+
+    </ejs-schedule>
+
+
+	@*@{
+    List<AppointmentData> appData = new List<AppointmentData>
+    {
+        new AppointmentData
+        { Id = 1, Subject = "Explosion of Betelgeuse Star", StartTime = new DateTime(2022, 2, 11, 9, 30, 0), EndTime = new DateTime(2022, 2, 11, 11, 0, 0) },
+        new AppointmentData
+        { Id = 2, Subject = "Thule Air Crash Report", StartTime = new DateTime(2022, 2, 12, 12, 0, 0), EndTime = new DateTime(2022, 2, 12, 14, 0, 0) },
+        new AppointmentData
+        { Id = 3, Subject = "Blue Moon Eclipse", StartTime = new DateTime(2022, 2, 13, 9, 30, 0), EndTime = new DateTime(2022, 2, 13, 11, 0, 0) },
+        new AppointmentData
+        { Id = 4, Subject = "Meteor Showers in 2022", StartTime = new DateTime(2022, 2, 14, 13, 0, 0), EndTime = new DateTime(2022, 2, 14, 14, 30, 0) },
+        new AppointmentData
+        { Id = 5, Subject = "Milky Way as Melting pot", StartTime = new DateTime(2022, 2, 15, 12, 0, 0), EndTime = new DateTime(2022, 2, 15, 14, 0, 0) }
+    };
+}
+
+@{
+    List<ScheduleView> viewOption = new List<ScheduleView>()
+    {
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Day },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Week },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.WorkWeek },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Month },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Year },
+        new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.TimelineDay }
+    };
+}
+
+<ejs-schedule id="schedule" views="viewOption" height="550" selectedDate="new DateTime(2022, 2, 15)">
+    <e-schedule-eventsettings dataSource="appData"></e-schedule-eventsettings>
+</ejs-schedule>
+*@
+<!-- Syncfusion ASP.NET Core Script Manager -->
+<ejs-scripts></ejs-scripts>
+</body>
+</html>
+
